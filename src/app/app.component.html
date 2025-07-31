@@ -1,0 +1,18 @@
+<hello name="{{ name }}"></hello>
+
+<div class="chessboard">
+  <div *ngFor="let row of rows; let rowIndex = index">
+    <div
+      *ngFor="let col of cols; let colIndex = index"
+      class="cell"
+      [ngClass]="{
+        black: isBlack(row, col),
+        white: !isBlack(row, col),
+        selected: selectedCell?.row === rowIndex && selectedCell?.col === colIndex
+      }"
+      (click)="onCellClick(rowIndex, colIndex)"
+    >
+      {{ board[rowIndex][colIndex] }}
+    </div>
+  </div>
+</div>
